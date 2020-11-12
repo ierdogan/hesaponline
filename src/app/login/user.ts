@@ -8,4 +8,9 @@ export class User{
     email:string;
     password:string;
     role:string;
+    createdAt:Date;
 }
+export class LoginResponse{
+    success:boolean;
+    data:User;
+  }
