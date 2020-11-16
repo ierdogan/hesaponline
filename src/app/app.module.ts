@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { AccountService } from './services/account.service';
 import { IntroComponent } from './intro/intro.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { AlertifyService } from './services/alertify.service';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     NavComponent,
     IntroComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AccountService],
+  providers: [AccountService,AlertifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

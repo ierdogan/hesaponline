@@ -1,0 +1,28 @@
+<form #registerForm="ngForm" (ngSubmit)="register(registerForm)" class="form-signin">
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal">Yeni Kullanıcı</h1>
+    </div>
+    
+    <div class="form-label-group">
+        <input type="text" #name="ngModel" [(ngModel)]="model.name"
+        id="name" name="name" class="form-control" placeholder="Ad Soyad" required autofocus>
+        <label for="name">Kullanıcı Adı</label>
+      </div>
+
+    <div class="form-label-group">
+        <input type="text" #email="ngModel" [(ngModel)]="model.email"
+        id="email" name="email" class="form-control" placeholder="E-mail" required autofocus>
+        <!-- <div *ngIf="email.invalid&&email.dirty" class="alert-danger">E-mail gereklidir!</div> -->
+        <label for="email">E-mail</label>
+      </div>
+  
+    <div class="form-label-group">
+        <input type="password" #password="ngModel" [(ngModel)]="model.password"
+        id="password" name="password" class="form-control" placeholder="Şifre" required>
+        <label for="password">Şifre</label>
+      </div>
+  
+
+    <button  class="btn btn-lg btn-secondary btn-block" type="submit">Kaydet</button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2020 hesaponline.com</p>
+  </form>

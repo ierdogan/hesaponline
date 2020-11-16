@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { registerLocaleData } from '@angular/common';
 
 @Injectable()
 
@@ -40,6 +41,21 @@ export class AccountService {
 
   }
 
+  register(newUser:User){
+    const url = this.path + "register";
+    console.log(url);
+    newUser.role="user";
+    return this.httpClient.post<LoginResponse>((url), newUser, this.httpOptions).pipe(
+      tap(data => {
+        if (data.success)
+          console.log("registered:"+data.data.name)
+        else
+          console.log("Not registered")
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   loginName() {
     if (localStorage.getItem("isLogged"))
       return localStorage.getItem("isLogged");
@@ -62,7 +78,7 @@ export class AccountService {
   logOut() {
     localStorage.removeItem("isLogged");
     this.loggedIn = false;
-    this.router.navigate(['/intro']);
+    this.router.navigate(['/home']);
   }
 
   // handleError(err: HttpErrorResponse) {
